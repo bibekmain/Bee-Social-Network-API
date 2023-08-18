@@ -1,11 +1,10 @@
 const { User, Thought } = require("../models");
-// const { create } = require ('../models/User');
 
 module.exports = {
   // Get all students
   getUsers(req, res) {
     User.find({},{},{new:true})
-      .populate('thoughts', 'thoughtText')
+      .populate('thoughts')
       .populate('friends')
       .then((data) => res.json(data))
       .catch((err) => {

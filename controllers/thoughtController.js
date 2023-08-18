@@ -67,6 +67,12 @@ module.exports = {
 
   // Create a reaction //TODO:
   createReaction(req, res) {
+    /*Example reaction request
+    {
+      "username": "exampleuser",
+      "reactionBody": "example reaction"
+    }
+    */
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: { reactions: req.body } },
