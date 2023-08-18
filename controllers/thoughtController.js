@@ -4,6 +4,7 @@ module.exports = {
   // Get all thoughts
   getThoughts(req, res) {
     Thought.find()
+      .populate("reactions")
       .then((data) => res.json(data))
       .catch((err) => {
         console.log(err);
@@ -14,6 +15,7 @@ module.exports = {
   // Get a thought
   getThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
+      .populate("responses")
       .then((data) => res.json(data))
       .catch((err) => {
         console.log(err);
