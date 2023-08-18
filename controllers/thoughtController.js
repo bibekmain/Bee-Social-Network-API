@@ -23,6 +23,12 @@ module.exports = {
 
   // Create a thought
   async createThought(req, res) {
+    /*Example req.body
+      {
+        "username": "exampleUser",
+        "thoughtText": "example thought text"
+      }
+    */
     try {
       const newThought = await Thought.create(req.body);
       if (newThought) {
@@ -43,6 +49,11 @@ module.exports = {
 
   // Update a thought
   updateThought(req, res) {
+    /*Example req.body
+      {
+        thoughtText: "example thought text"
+      }
+    */
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: req.body },
@@ -67,7 +78,7 @@ module.exports = {
 
   // Create a reaction //TODO:
   createReaction(req, res) {
-    /*Example reaction request
+    /*Example req.body
     {
       "username": "exampleuser",
       "reactionBody": "example reaction"

@@ -25,6 +25,12 @@ module.exports = {
 
   // create a new user
   createUser(req, res) {
+    /*Example req.body
+      {
+        "userame": "newUsername",
+        "email": "newEmail@email.com"
+      }
+    */
     User.create(req.body)
       .then((data) => res.json(data))
       .catch((err) => {
@@ -35,6 +41,12 @@ module.exports = {
 
   // update a user
   updateUser(req, res) {
+    /*Example req.body
+      {
+        "userame": "newUsername",
+        "email": "newEmail@email.com"
+      }
+    */
     User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
       .then((data) => res.json(data))
       .catch((err) => {
