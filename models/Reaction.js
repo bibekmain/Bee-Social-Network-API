@@ -1,4 +1,5 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const reactionSchema = new Schema(
   {
@@ -12,13 +13,13 @@ const reactionSchema = new Schema(
       maxlength: 280,
     },
     username: {
-      type: Number,
+      type: String,
       required: true,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      //TODO: IMPLEMENT A GETTER
+      get: (date) => dateFormat(date),
     },
   },
   {
