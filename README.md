@@ -32,7 +32,7 @@ The Bee Social Network API is a comprehensive and robust backend solution tailor
 You can retrieve user and thought information by sending get requests to the server. You can also create users, friendships, thoughts, and reactions by making post requests to the server, along with put requests that can update user information, or update thought information. Alongside that you can make delete requests to the server to get rid of users, thoughts, responses, and friends.  
 
 ### Usage Tutorial:  
-Follow [this](https://drive.google.com/file/d/1c03p1vDnfBO4Y2IvcxzvLW_G-L5q1ZNt/view?usp=sharing) link to view the usage tutorial for the different API calls that can be made using this application.
+Follow [this](https://drive.google.com/file/d/1-Cg4OuBIg0j8As741boPwhBMVhYNWYZp/view?usp=sharing) link to view the usage tutorial for the different API calls that can be made using this application.
 
 ## Credits  
 
