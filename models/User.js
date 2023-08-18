@@ -13,6 +13,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      //simple regex for email filter
       match: [/\w+@\w+(.\w{2,3})+/, "Email address INVALID"],
     },
     thoughts: [

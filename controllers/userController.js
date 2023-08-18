@@ -3,7 +3,7 @@ const { User, Thought } = require("../models");
 module.exports = {
   // Get all students
   getUsers(req, res) {
-    User.find({},{},{new:true})
+    User.find()
       .populate('thoughts')
       .populate('friends')
       .then((data) => res.json(data))
@@ -16,6 +16,8 @@ module.exports = {
   // Get a single student
   getUser(req, res) {
     User.findOne({ _id: req.params.userId })
+      .populate('thoughts')
+      .populate('friends')
       .then((data) => res.json(data))
       .catch((err) => {
         console.log(err);
@@ -73,19 +75,19 @@ module.exports = {
       { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
-      //update 2nd party's friend list
-      .then((data) =>
-        User.findOneAndUpdate(
-          { _id: req.params.friendId },
-          { $addToSet: { friends: req.params.userId } },
-          { runValidators: true, new: true }
-        )
+    //update the friend's friend list
+    .then((data) =>
+      User.findOneAndUpdate(
+        { _id: req.params.friendId },
+        { $addToSet: { friends: req.params.userId } },
+        { runValidators: true, new: true }
       )
-      .then((data) => res.json(data))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    )
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   },
 
   // Remove a friend from a user
